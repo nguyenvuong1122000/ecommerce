@@ -1,0 +1,297 @@
+{##}
+{#  <h2>Sign up</h2>#}
+{#  <form method="post">#}
+{#    {% csrf_token %}#}
+{#    {% for field in form %}#}
+{#      <p>#}
+{#        {{ field.label_tag }}<br>#}
+{#        {{ field }}#}
+{#        {% if field.help_text %}#}
+{#          <small style="color: grey">{{ field.help_text }}</small>#}
+{#        {% endif %}#}
+{#        {% for error in field.errors %}#}
+{#          <p style="color: red">{{ error }}</p>#}
+{#        {% endfor %}#}
+{#      </p>#}
+{#    {% endfor %}#}
+{#    <button type="submit">Sign up</button>#}
+{#  </form>#}
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Đăng nhập </title>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+        <style>body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #EEEEEE;
+    background-repeat: no-repeat
+}
+
+a {
+    color: #000
+}
+
+.card0 {
+    box-shadow: 0px 4px 8px 0px #757575;
+    border-radius: 20px
+}
+
+.card1 {
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: #512DA8;
+    height: 100%;
+    color: #fff;
+    padding-left: 13%;
+    padding-right: 13%
+}
+
+.logo {
+    margin-top: 30px;
+    margin-left: 15px;
+    cursor: pointer
+}
+
+.card2 {
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px
+}
+
+.social-connect .fa-google-plus {
+    color: #df4b37;
+    padding: 10px 12px;
+    font-size: 20px
+}
+
+.social-connect .fa-facebook-square {
+    color: #3b5998;
+    padding: 10px 15px;
+    font-size: 20px
+}
+
+.social-connect {
+    padding: 3px 0px 3px 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #E0E0E0
+}
+
+.social-connect:hover {
+    background-color: #EEEEEE
+}
+
+.line {
+    height: 1px;
+    width: 45%;
+    background-color: #E0E0E0;
+    margin-top: 10px
+}
+
+.or {
+    width: 10%
+}
+
+.text-sm {
+    font-size: 14px !important
+}
+
+input {
+    padding: 10px 12px 10px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 14px;
+    letter-spacing: 1px
+}
+
+input:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #512DA8;
+    outline-width: 0
+}
+
+::placeholder {
+    color: #EEEEEE;
+    opacity: 1
+}
+
+:-ms-input-placeholder {
+    color: #EEEEEE
+}
+
+::-ms-input-placeholder {
+    color: #EEEEEE
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+.btn-blue {
+    background-color: #512DA8;
+    width: 100%;
+    color: #fff;
+    border-radius: 6px
+}
+
+.btn-blue:hover {
+    background-color: #311B92;
+    color: #fff;
+    cursor: pointer
+}
+
+.card-0 {
+    color: #311B92;
+    background-color: #fff;
+    border-radius: 20px;
+    min-height: 352px;
+    margin-top: 80px;
+    padding: 30px
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: -100px;
+    display: -webkit-box !important
+}
+
+.carousel-indicators li {
+    cursor: pointer;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    opacity: 0.5;
+    margin: 5px !important
+}
+
+.carousel-indicators li.active {
+    opacity: 1;
+    width: 50px !important;
+    height: 50px !important;
+    margin-top: 0px !important;
+    border: 2px solid #fff
+}
+
+.carousel-indicators li#li1 {
+    background: url("https://i.imgur.com/IjkibdE.jpg") !important;
+    background-size: cover !important
+}
+
+.carousel-indicators li#li2 {
+    background: url("https://i.imgur.com/oW8Wpwi.jpg") !important;
+    background-size: cover !important
+}
+
+.carousel-indicators li#li3 {
+    background: url("https://i.imgur.com/EUYNvE1.jpg") !important;
+    background-size: cover !important
+}
+
+.carousel-indicators li#li4 {
+    background: url("https://i.imgur.com/ndQx2Rg.jpg") !important;
+    background-size: cover !important
+}
+
+.carousel-indicators li#li5 {
+    background: url("https://i.imgur.com/gazoShk.jpg") !important;
+    background-size: cover !important
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px)
+}
+
+.content {
+    color: #000;
+    font-size: 14px
+}
+
+.social {
+    margin-top: 150px
+}
+
+@media screen and (max-width: 991px) {
+    .card1 {
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 20px
+    }
+
+    .card2 {
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0px
+    }
+}</style>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript'></script>
+                            </head>
+    <body oncontextmenu='return false' class='snippet-body'>
+    <div class="container-fluid px-2 px-md-4 py-5 mx-auto">
+    <div class="card card0 border-0">
+
+        <div class="row d-flex">
+            <div class="col-lg-5">
+                <div class="card1 pb-5">
+                    <div class="row px-3">
+                        <h5 class="logo"><u></u></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card2 card border-0 px-4 px-sm-5 py-5"> <small class="text-right mb-3"><a href=""><u></u></a></small>
+                    <form method="POST">
+                        {% csrf_token %}
+                    <h3 class="mb-1">Đăng nhập vào website</h3>
+                    <div class="row mt-3">
+
+                        <div class="col-md-6"> <label class="mb-0">
+                                <h6 class="mb-0 text-sm">Username</h6>
+                        </label> {{ form.username }} </div>
+
+                        </div>
+                    <div class="row mt-3">
+                    <div class="col-md-6"> <label class="mb-0">
+                            <h6 class="mb-0 text-sm">Password</h6>
+                        </label> {{ form.password }} </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6"> <button type="submit" class="btn btn-blue text-center mb-1 py-2">Đăng nhâp</button> </div>
+                    </div>
+                           </form>
+                    <div class="row px-3 mb-4">
+                        <div class="line"></div> <small class="text-muted or text-center">OR</small>
+                        <div class="line"></div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-sm-6" href="">
+                            <p class="social-connect"><small class="pl-3 pr-1">Đăng ký
+                            </small></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

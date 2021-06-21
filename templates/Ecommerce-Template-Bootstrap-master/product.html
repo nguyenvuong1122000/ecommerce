@@ -1,0 +1,55 @@
+{% extends "Ecommerce-Template-Bootstrap-master/base.html" %}
+{% load my_tags %}
+
+{%block product_catelogies%}
+    <section class="text-center mb-4">
+        {% for i in product  %}
+            {% if forloop.counter0|modulo:4 == 0  %}
+                <div class="row wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+            {% endif %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <!--Card-->
+            <div class="card">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{ i.product_imagepath }}" alt="" width="250" height="250">
+                <a href="../product/{{ i.product_ID }}" class="grey-text">
+                  <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="../product/{{ i.product_ID }}" class="grey-text">
+                    <!--title here-->
+
+                </a>
+                <h5>
+                  <strong>
+                      {% string_format i.prduct_name as thename%}
+                      <a href="../product/{{ i.product_ID }}" class="dark-grey-text">{{ thename }} </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>{% format_value i.prduct_price%} </strong>
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+            {% if forloop.counter0|modulo:4 == 3  %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+    </section>
+{% endblock %}

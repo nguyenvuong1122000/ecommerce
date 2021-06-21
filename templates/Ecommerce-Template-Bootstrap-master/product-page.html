@@ -1,0 +1,330 @@
+{% load static %}
+{% load my_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{ product.prduct_name}}</title>
+  <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href={% static "css/bootstrap.min.css" %} rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+      <link href={% static "css/mdb.min.css" %} rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+      <link href={% static "css/mdb.min.css" %} rel="stylesheet">
+    <script>
+    function submitData(datas) {
+        $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                 }
+             }
+        });
+        $.ajax({
+            type: 'POST',
+            data: {
+                id : datas,
+                amount : document.getElementById("amount").value
+            },
+            url: "{% url 'add_to_cart'  %}"
+        }).done(function(data) {
+            alert("Thêm " + document.getElementById("amount").value + " sản phẩm vào giỏ hàng thành công");
+        })
+    };
+
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="http://127.0.0.1:8000/" target="">
+        <strong class="blue-text">PROJECT 2 </strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul><!-- Right -->
+          {% if login_status %}
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="../../order/checkout">
+              <span class="badge red z-depth-1 mr-1"> {{ count }} </span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link waves-effect" href="../account/logout">
+              <span class="z-depth-1 mr-1"> Đăng xuất </span>
+            </a>
+          </li>
+        </ul>
+          {% endif %}
+      {% if not login_status  %}
+      <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="../../account/login/">
+              <span class="badge red z-depth-1 mr-1"> Đăng nhập </span>
+            </a>
+          </li>
+      </ul>
+      <ul class="navbar-nav nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link waves-effect" href="../../account/signup/user">
+          <span class="badge red z-depth-1 mr-1"> Đăng ký </span>
+        </a>
+      </li>
+
+  </ul>
+
+    {% endif %}
+      </div>
+
+    </div>
+  </nav>
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src= {{ product.product_imagepath }} class="img-fluid" alt="" height="450" width="450">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-3">
+
+            <div class="mb-3">
+                <span class="badge purple mr-1">{{ product.categories}}</span>
+            </div>
+            <p class="lead">
+              <span class="fa-">
+                  <strong>{{ product.prduct_name }}</strong>
+            </p>
+
+            <p class="lead">
+              <span class="mr-1"></span>
+              <span>{% format_value product.prduct_price%} </span>
+            </p>
+
+            <p class="lead font bold">Nhà cung cấp : {{ product.seller.username }}</p>
+
+
+                {% csrf_token %}
+
+              <form class="d-flex justify-content-left" id = "submitForm">
+              <!-- Default input -->
+                  {% if login_status %}
+                      <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px" id="amount">
+
+              <button class="btn btn-primary btn-md my-0 p" type="submit" onclick="submitData({{ product.product_ID}})"">Add to cart
+                  <i class="fas fa-shopping-cart ml-1"></i>
+
+                    {% else %}
+                      <button disabled class="btn btn-primary btn-md my-0 p" type="submit">Bạn cần đăng nhập
+                  {% endif %}
+              </button>
+
+            </form>
+
+          </div>
+          <!--Content-->
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+    <div class="fa-address-book">
+        <div class="lead font-weight-bold">
+            <span>Mô tả sản phẩm </span>
+
+        </div>
+        <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        {{ product.product_desciption|safe }}
+        <!--Grid column-->
+
+      </div>
+
+        {% block comment %}
+        {% endblock %}
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Sản phẩm tương tự</h4>
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+        </div>
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+    <!--Call to action-->
+    <div class="pt-4">
+      <a class="btn btn-outline-blue" href="../../" target="_blank" role="button">
+          Home Page
+      </a>
+      <a class="btn btn-outline-blue" href="../../" target="_blank" role="button">More product
+      </a>
+    </div>
+    <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fab fa-google-plus-g mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      <a href="https://www.facebook.com/nguyenvuong1122000/"target="_blank"> @VuongNguyen </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script type="text/javascript" src="{%static  "js/popper.min.js"%}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{%static  "js/bootstrap.min.js"%}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{%static  "js/mdb.min.js"%}" ></script>
+  <!-- Initializations -->
+  <scriptsrc="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+</body>
+
+</html>
