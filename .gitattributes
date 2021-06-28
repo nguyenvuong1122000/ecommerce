@@ -1,4 +1,7 @@
 *.static/* linguist-vendored
 *.templates/* linguist-vendored
+*.css linguist-detectable=false
+*.js linguist-detectable=true
+*.java linguist-detectable=false
 
 
