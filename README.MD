@@ -28,9 +28,8 @@
 | Danh sách  | &#10004; | Chức năng xem danh sách sản phẩm  |
 | Bình luận   | &#10004; | Chức năng bình luận  |
 | Thêm sản phẩm vào hệ thống   | &#10004; | Chức năng thêm sản phẩm vào hệ thống  |
-| Xóa sản phẩm| &#10004;   | Ability to see the Cart and it items |
-| Xem thông tin các đơn đặt hàng  | &#10004; | Ability of Remove a Cart |
-| Đổi trạng thái giao hàng   | &#10004; | Ability of Remove a Cart |
+| Xem thông tin các đơn đặt hàng  | &#10004; | Chức năng xem thông tin các đơn đặt hàng, đơn đặt hàng của Customer sẽ được chia theo seller để dảm bào việc giao hàng thuận lợi hơn |
+| Đổi trạng thái giao hàng   | &#10004; | Đổi trạng thái giao hàng : Đã giao, Đang giao |
 
 
 ## Running project
