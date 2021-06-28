@@ -22,7 +22,7 @@
 
 - <b>Seller Features </b>
 
-| Feature  |  Coded?       | Description  |
+| Feature  |  Coded?       | Mô tả  |
 |----------|:-------------:|:-------------|
 | Tìm kiếm sản phẩm   | &#10004; | Chức năng tìm kiếm sản phẩm dựa trên người dùng nhập   |
 | Danh sách  | &#10004; | Chức năng xem danh sách sản phẩm  |
