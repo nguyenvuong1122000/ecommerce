@@ -75,7 +75,6 @@ def check_out_page(request):
                 print(query_set)
             cart = Cart(user=Customer.objects.get(pk=request.user.id))
             cart.save()
-            return HttpResponse("Mua hàng thành công")
     else:
         form = Check_outForm()
     context = {

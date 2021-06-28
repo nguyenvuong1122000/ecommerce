@@ -1,9 +1,7 @@
-import requests
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from home.models import Product, Product_categories
-from guardian.shortcuts import assign_perm
 from django import forms
 from django.utils.html import format_html
 

@@ -7,9 +7,13 @@ from order.models import *
 from django.views.generic import ListView
 def get_home(request, page = 0):
     login_status = request.user.is_authenticated
+    name = request.user.username
     if login_status:
         cart = Cart.objects.filter(user_id=request.user.id).last()
-        count = cart.products.count
+        if cart != None :
+            count = cart.products.count
+        else:
+            count = 0
     else:
         count = 0
     product = Product.objects.all()
@@ -19,35 +23,45 @@ def get_home(request, page = 0):
     context= {
         'product' : product,
         'login_status' : login_status,
-        'count' : count
+        'count' : count,
+        'name' : name
     }
     return render(request, 'Ecommerce-Template-Bootstrap-master/product.html', context)
 
 
 def get_product(request, id):
     login_status = request.user.is_authenticated
+    name = request.user.username
 
     if login_status:
         cart = Cart.objects.filter(user_id=request.user.id).last()
-        count = cart.products.count
+        if cart != None :
+            count = cart.products.count
+        else:
+            count = 0
     else:
         count = 0
     product = Product.objects.get(pk = id)
     context= {
         'product' : product,
         'login_status' : login_status,
-        'count' : count
+        'count' : count,
+        'name' : name
     }
     return render(request, 'Ecommerce-Template-Bootstrap-master/comment.html', context)
 
 
 
 def get_product_by_category(request, category, page = 0):
-    login_status = request.user.is_authenticated
+    name = request.user.username
 
+    login_status = request.user.is_authenticated
     if login_status:
         cart = Cart.objects.filter(user_id=request.user.id).last()
-        count = cart.products.count
+        if cart != None :
+            count = cart.products.count
+        else:
+            count = 0
     else:
         count = 0
     product = Product.objects.filter(categories__categories_Name = category)
@@ -57,7 +71,8 @@ def get_product_by_category(request, category, page = 0):
         'product' : product,
         'page':page,
         'login_status': login_status,
-        'count' : count
+        'count' : count,
+        'name' : name
     }
     return render(request, 'Ecommerce-Template-Bootstrap-master/product.html', context)
 
