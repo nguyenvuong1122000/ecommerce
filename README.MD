@@ -20,7 +20,7 @@
 | Bình luận   | &#10004; | Chức năng bình luận  |
 | Tạo đơn đặt hàng  |&#10004; | Chức năng tạo đơn hàng từ, thông tin đơn hàng được nhập và lấy từ giỏ hàng |
 
-<b>Seller Features </b>
+- <b>Seller Features </b>
 
 | Feature  |  Coded?       | Description  |
 |----------|:-------------:|:-------------|
