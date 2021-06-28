@@ -22,7 +22,7 @@
 
 <b>Seller Features </b>
 
-| Feature  |  Coded?       | Description  |
+| Chức năng   |  Coded?       | Mô tả   |
 |----------|:-------------:|:-------------|
 | Thêm sản phẩm vào hệ thống   | &#10004; | Chức năng thêm sản phẩm vào hệ thống  |
 | Xóa sản phẩm| &#10004;   | Chức năng xóa sản phẩm khỏi  hệ thống |
