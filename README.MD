@@ -20,21 +20,24 @@
 | Bình luận   | &#10004; | Chức năng bình luận  |
 | Tạo đơn đặt hàng  |&#10004; | Chức năng tạo đơn hàng từ, thông tin đơn hàng được nhập và lấy từ giỏ hàng |
 
-- <b>Seller Features </b>
+<b>Seller Features </b>
 
-| Chức năng   |  Coded?       | Mô tả   |
+| Feature  |  Coded?       | Description  |
 |----------|:-------------:|:-------------|
+| Tìm kiếm sản phẩm   | &#10004; | Chức năng tìm kiếm sản phẩm dựa trên người dùng nhập   |
+| Danh sách  | &#10004; | Chức năng xem danh sách sản phẩm  |
+| Bình luận   | &#10004; | Chức năng bình luận  |
 | Thêm sản phẩm vào hệ thống   | &#10004; | Chức năng thêm sản phẩm vào hệ thống  |
-| Xóa sản phẩm| &#10004;   | Chức năng xóa sản phẩm khỏi  hệ thống |
-| Xem thông tin các đơn đặt hàng  | &#10004; | Chức năng xem thông tin các đơn đặt hàng  |
-| Đổi trạng thái giao hàng   | &#10004; | Chức năng thay đổi trạng thài giao hàng của đơn hàng : Đang giao, đã giao |
+| Xóa sản phẩm| &#10004;   | Ability to see the Cart and it items |
+| Xem thông tin các đơn đặt hàng  | &#10004; | Ability of Remove a Cart |
+| Đổi trạng thái giao hàng   | &#10004; | Ability of Remove a Cart |
 
 
 ## Running project
 
 
 
-- Để bắt đầu và run project này, máy tính cần cài sẵn Python 3.8 trong máy. Nên tạo một virtual environment để quản lý các thư viện
+- Để bắt đầu và run project này, máy tính cần cài sẵn Python 3.8 trong máy. Nên tạo một virtual environment để quản lý các thư việ
 ```
 pip install virtualenv
 ```
