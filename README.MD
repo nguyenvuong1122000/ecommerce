@@ -34,7 +34,7 @@
 
 
 
-- Để bắt đầu và run project này, máy tính cần cài sẵn Python 3.8 trong máy. Nên tạo một virtual environment để quản lý các thư việ
+- Để bắt đầu và run project này, máy tính cần cài sẵn Python 3.8 trong máy. Nên tạo một virtual environment để quản lý các thư viện
 ```
 pip install virtualenv
 ```
