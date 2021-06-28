@@ -1,5 +1,1 @@
-/templates/* linguist-vendored
-/static/* linguist-vendored
-
-# Project exclude paths
-/venv/
+*.html linguist-detectable=false
