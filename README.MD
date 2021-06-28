@@ -5,6 +5,7 @@
 - Đây là repo chứa code của môn học PROJECT II học kì 20202 do sinh viên Nguyễn Thịnh Vượng thực hiện được.
 - Đề tài : Xây dựng hệ thống thương mại điện tử
 
+
 ## Các chức năng 
 
 - <b>Customer Features </b>
@@ -24,37 +25,38 @@
 | Feature  |  Coded?       | Description  |
 |----------|:-------------:|:-------------|
 | Thêm sản phẩm vào hệ thống   | &#10004; | Chức năng thêm sản phẩm vào hệ thống  |
-| Xóa sản phẩm   | Ability to see the Cart and it items |
+| Xóa sản phẩm| &#10004;   | Ability to see the Cart and it items |
 | Xem thông tin các đơn đặt hàng  | &#10004; | Ability of Remove a Cart |
 | Đổi trạng thái giao hàng   | &#10004; | Ability of Remove a Cart |
 
 
+## Running project
 
-## Running this project
 
-Để bắt đầu và run project này, máy tính cần cài sẵn Python 3.8 trong máy. Nên tạo một virtual environment để quản lý các thư việ
+
+- Để bắt đầu và run project này, máy tính cần cài sẵn Python 3.8 trong máy. Nên tạo một virtual environment để quản lý các thư việ
 ```
 pip install virtualenv
 ```
 
-Tải code của project này về máy. Trên terminal (linux) hoặc windows terminal, chạy command sau 
+ - Tải code của project này về máy. Trên terminal (linux) hoặc windows terminal, chạy command sau 
 
 ```
 virtualenv env
 ```
 
-Command đó sẽ tạo  `env` trong project directory. Kích hoạt `env` đó bằng command  :
+- Command đó sẽ tạo  `env` trong project directory. Kích hoạt `env` đó bằng command  :
 
 ```
 source env/bin/active
 ```
 
-Sau đó cài đặt các thư viện bổ trợ cần thiết : 
+- Sau đó cài đặt các thư viện bổ trợ cần thiết : 
 ```
 pip install -r requirements.txt
 ```
 
-Khởi chạy sever : 
+- Khởi chạy sever : 
 ```
 python manage.py runserver
 ```
@@ -62,5 +64,4 @@ python manage.py runserver
 
 - Password của admin : 123
 
----
 
