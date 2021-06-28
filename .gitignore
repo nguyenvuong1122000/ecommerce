@@ -1,5 +1,5 @@
-templates * linguist-vendored
-*.js linguist-vendored=false
+/templates/* linguist-vendored
+/static/* linguist-vendored
 
 # Project exclude paths
 /venv/
