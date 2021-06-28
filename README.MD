@@ -67,4 +67,6 @@ python manage.py runserver
 
 - Password của admin : 123
 
+## Tài liệu liên quan
+- Các tài liệu liên quan có thể tìm thấy ở : https://drive.google.com/file/d/1hr_Q7eZk1l1S_cb09zBuWzpIUbeu1qQU/view?usp=sharing
 
